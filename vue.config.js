@@ -24,7 +24,8 @@ module.exports = defineConfig({
   // vue中配置
   pluginOptions: {
     electronBuilder: {
-      mainProcessFile: 'src/main/background.js' //  设置自定义入口文件
+      mainProcessFile: 'src/main/background.js', //  设置自定义入口文件
+      nodeIntegration: true,
     }
   },
   // css:{

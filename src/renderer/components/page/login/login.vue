@@ -74,8 +74,6 @@ export default {
         if (valid) {
           // 验证码；
           // this.handlerclick();
-          debugger;
-          console.log(this.$check.testMobile(10));
           this.loginApi()
         } else {
           return false;
@@ -105,9 +103,10 @@ export default {
         }
       }
       this.$request.post(this.$API.login, obj, config).then((res) => {
-        if(res.status==200){
-          localStorage.setItem('token',res.data.access_token)
-          localStorage.setItem('loginInfo',JSON.stringify(res.data))
+        // 判断token是否存在
+        if(res.access_token){
+          localStorage.setItem('token',res.access_token)
+          localStorage.setItem('loginInfo',JSON.stringify(res))
           this.$router.push({path:'/HelloWorld'})
         }
       })
